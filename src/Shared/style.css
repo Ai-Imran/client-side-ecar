@@ -9,11 +9,11 @@
 
 }
 ul a{
-    color: #c8d6e5;
+    color: white;
 }
 ul a:active{
-    color: white;
+    color: #59d340;
 }
 ul a:hover{
-    color: white;
+    color: #59d340;
 }

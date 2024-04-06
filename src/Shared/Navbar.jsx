@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import './style.css'
 
 const Navbar = () => {
@@ -14,16 +14,24 @@ const Navbar = () => {
                            
                         </ul>
                     </div>
-                    <a className="btn text-lime-500 btn-ghost text-xl">E-Car</a>
+                    <Link to={'/'} className="btn text-lime-500 btn-ghost text-3xl">E-Car</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu space-x-6 text-2xl font-bold menu-horizontal px-1">
-                       <NavLink>Home</NavLink>
+                    <ul className="menu space-x-6 text-[18px] font-bold menu-horizontal px-1">
+                       <NavLink to={'/'}>হোম</NavLink>
+                       <NavLink>সার্ভিসসমূহ</NavLink>
+                       <NavLink>যোগাযােগ</NavLink>
+                       <NavLink>আপনার সমস্যা</NavLink>
+                       <NavLink>আমাদের সহায়তা</NavLink>
+                       <NavLink>আমাদের সর্ম্পকে</NavLink>
+                        <NavLink>লগইন করুন</NavLink>
+
+                       {/* <NavLink>Home</NavLink>
                        <NavLink>Services</NavLink>
                        <NavLink>About</NavLink>
                        <NavLink>Contact Us</NavLink>
                        <NavLink>Help</NavLink>
-                       <NavLink>Login</NavLink>
+                       <NavLink>Login</NavLink> */}
                     </ul>
                 </div>
                

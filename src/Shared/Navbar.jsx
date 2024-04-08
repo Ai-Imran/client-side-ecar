@@ -19,7 +19,7 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu space-x-6 text-[18px] font-bold menu-horizontal px-1">
                        <NavLink to={'/'}>হোম</NavLink>
-                       <NavLink>সার্ভিসসমূহ</NavLink>
+                       <NavLink>সার্ভিস শুরু করুন</NavLink>
                        <NavLink>যোগাযােগ</NavLink>
                        <NavLink>আপনার সমস্যা</NavLink>
                        <NavLink>আমাদের সহায়তা</NavLink>

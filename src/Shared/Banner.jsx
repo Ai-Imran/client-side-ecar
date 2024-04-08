@@ -1,4 +1,6 @@
-import img from '../assets/3643906.jpg'
+
+import img from '../assets/3643906.jpg';
+import img1 from '../assets/3619803.jpg';
 import './style.css';
 import { FaFacebookMessenger, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import imo from '../assets/imo.png'
@@ -45,6 +47,9 @@ const Banner = () => {
             </div>
             {/* why our services */}
             <div className="flex ">
+                 <div className='w-1/2 p-8 '>
+                    <img className='rounded-lg' src={car3} alt="" />
+                </div>
                 <div className='w-1/2 text-center text-white ‍'>
                     <h2 className="text-4xl mt-4 tracking-wider">
                         রাইড শেয়ারিং কি এবং <br /> আপনি আমাদের কাছ থেকে <br /> কেন সার্ভিসটি নিবেন
@@ -68,11 +73,23 @@ const Banner = () => {
                     </p>
 
                 </div>
-                <div className='w-1/2 p-8 '>
-                    <img className='rounded-lg' src={car3} alt="" />
+               
+            </div>
+            {/* passer by */}
+            <div className="flex my-20">
+                <div className='w-1/2 text-gray-300'>
+                <h2 className="font-bold text-white text-center text-3xl">
+                আমি একজন যাত্রী । এখন আমি কীভাবে আপনাদের সার্ভিসটি নিতে পারি ?
+                </h2>
+                <p>
+                    আপনি যদি আপনার অফিসে অথবা দূরে কোথা্ও যা্ওয়ার জন্য কোনো গাড়ি খুজতেছেন । অথবা ইমার্জেন্সি 
+                </p>
+                
+                </div>
+                <div className='w-1/2 p-8'>
+                <img className='rounded-lg' src={img1} alt="" />
                 </div>
             </div>
-
         </div>
     );
 };

@@ -8,6 +8,9 @@ import Help from "../Pages/Help";
 import OurSelf from "../Pages/OurSelf";
 import Problem from "../Pages/Provlem";
 import Terms from "../Pages/Terms";
+import Signup from "../Pages/Signup";
+import Passenger from "../Pages/Passenger";
+import Driver from "../Pages/Driver";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +28,20 @@ export const router = createBrowserRouter([
        {
         path: 'login',
         element : <Login/>
+       },
+       {
+        path: 'signup',
+        element: <Signup/>,
+        children : [
+          {
+            path: 'passenger',
+            element:<Passenger/>
+          },
+          {
+            path: 'driver',
+            element: <Driver/>
+          }
+        ]
        },
        {
         path: 'contact',

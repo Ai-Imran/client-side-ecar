@@ -21,26 +21,27 @@ const Banner = () => {
                     <h1 className='lg:w-3/4 lg:ml-20 my-6 text-justify lg:text-center px-4'>
                         আপনি যদি কোনােরকম ঝামেলা ছাড়াই স্বল্প মূল্যেে আপনার নির্দিষ্ট গন্তব্যে পৌঁছাতে চান । তাহলে আর দেরি না করে আমাদের সাথে সরাসরি যোগাযোগ করুন 
                     </h1>
-                    <div className='border  px-8 py-10 border-lime-500 md:w-3/4 mx-2 md:mx-auto'>
-                        <div className="flex justify-center gap-10">
+                    <div className='border  px-8 py-10 rounded hover:border-lime-500 md:w-3/4 mx-2 md:mx-auto'>
+                        <div className="md:flex space-y-6 grid items-center justify-center md:gap-10">
 
                             <div className="flex  text-4xl gap-4 md:gap-8">
-                                <FaPhoneAlt />
+                            <FaPhoneAlt className='hover:text-lime-500 hover:rotate-90 transition delay-300 duration-300 '/>
 
-                                <FaWhatsapp />
-                                <img className='w-10 h-10' src={imo} alt="" />
-                            </div>
-                            <p className="font-semibold text-xl">
+                            <FaWhatsapp className='hover:text-lime-500 hover:rotate-45 transition delay-300 duration-300 '/>
+                            <img className='w-10 h-10 hover:bg-lime-500 hover:rotate-45 transition delay-300 duration-300 ' src={imo} alt="" />
+                        </div>
+                            <p className="font-semibold hover:text-lime-500 text-xl">
                                 01906951915 <br /> 01814189243
                             </p>
                         </div>
                         <div className="divider divider-secondary my-8"> অথবা </div>
-                        <div className="flex md:ml-24 text-4xl gap-8">
-                            <FaFacebook />
-                            <FaFacebookMessenger/>
-                            <FaTwitter />
-                            <FaInstagram />
-                            <FaYoutube/>
+                        <div className="grid grid-cols-3 lg:grid-col-5 md:ml-24 text-4xl gap-8">
+                        <FaFacebook className='hover:text-lime-500 hover:rotate-45 transition delay-300 duration-300 '/>
+                            <FaFacebookMessenger className='hover:text-lime-500 hover:rotate-45 transition delay-300 duration-300 '/>
+                            <FaTwitter className='hover:text-lime-500 hover:rotate-45 transition delay-300 duration-300 '/>
+                            <FaInstagram className='hover:text-lime-500 hover:rotate-45 transition delay-300 duration-300 '/>
+                            <FaYoutube className='hover:text-lime-500 hover:rotate-180 transition delay-300 duration-300 '/>
+
                         </div>
                     </div>
                 </div>
@@ -86,7 +87,7 @@ const Banner = () => {
                 আমি একজন যাত্রী । এখন আমি কীভাবে আপনাদের সার্ভিসটি নিতে পারি ?
                 </h2>
                 <p className='px-4 text-justify'>
-                    আপনি যদি আপনার অফিসে অথবা দূরে কোথা্ও যা্ওয়ার জন্য কোনো গাড়ি খুজতেছেন । অথবা ইমার্জেন্সি কোনো গাড়ির প্রয়োজন পড়ে তাহলে আর চিন্তা নেই। এখন আর গাড়ির জন্য বসে থাকতে হবে না। আমাদের শুধুমাত্র একটি কল দিন অথবা যোগাযোগ করুন আর কিছুক্ষণ অপেক্ষা করুন। আপনার যাত্রা শুরু করার জন্য গাড়িটি পৌঁছে যাবে।কোনোরকম ঝামেলা ছাড়া,যেকোনো সময় বৃষ্টিতে অথবা প্রচন্ড  শীতে কোনো সমস্যা নেই। আমাদের সাথে কেবল যোগাযোগ করুন। না হলে সরাসরি কল করুন <span className='text-xl text-lime-500 underline'>01906951915 </span> অথবা <span className='text-xl text-lime-500 underline'>01814189243</span> অথবা <FaFacebook className='inline-block text-3xl text-lime-500'/> <br /> <br /> সবচেয়ে ভালো হয় যদি আপনার একটি একাউন্ট থাকে। যদি না থাকে এখনই বিনামূল্যে খুলে নিন এখানে ক্লিক করে <Link className='italic text-lime-500 underline' to={'/একাউন্ট খুলুন'}> একাউন্ট খুলুন  </Link> আপনি সঠিক তথ্য দিয়ে একাউন্টটি খুলবেন, আপনি যদি ড্রাইভার হন তাহলে ড্রাইভার সিলেক্ট করবেন আর যদি যাত্রী হন তাহলে যাত্রী সিলেক্ট করবেন।তারপর শর্তানুযায়ী আপনার নাম,পেশা ছবি ইত্যাদি দিবেন।তাহলেই আপনার একটি একাউন্ট খুলা হয়ে যাবে। আর আপনি যেকোনো সুযোগ সুবিধা পেতে পারবেন। টাকা পয়সা লেনদেন করার জন্য যদি বিকাশ/নগদ/রকেট থাকে তাহলে গাড়ি ভাড়া নিয়ে কোনো ঝামেলা থাকবে না।না থাকলেও সমস্যা নেই তবে একটা বিকাশ একাউন্ট থাকা অবশ্যই ভালো।
+                    আপনি যদি আপনার অফিসে অথবা দূরে কোথা্ও যা্ওয়ার জন্য কোনো গাড়ি খুজতেছেন । অথবা ইমার্জেন্সি কোনো গাড়ির প্রয়োজন পড়ে তাহলে আর চিন্তা নেই। এখন আর গাড়ির জন্য বসে থাকতে হবে না। আমাদের শুধুমাত্র একটি কল দিন অথবা যোগাযোগ করুন আর কিছুক্ষণ অপেক্ষা করুন। আপনার যাত্রা শুরু করার জন্য গাড়িটি পৌঁছে যাবে।কোনোরকম ঝামেলা ছাড়া,যেকোনো সময় বৃষ্টিতে অথবা প্রচন্ড  শীতে কোনো সমস্যা নেই। আমাদের সাথে কেবল যোগাযোগ করুন। না হলে  সরাসরি কল করুন <span className='text-xl text-lime-500 underline'>01906951915 </span> অথবা <span className='text-xl text-lime-500 underline'>01814189243</span> অথবা <FaFacebook className='inline-block text-3xl text-lime-500'/> <br /> <br /> সবচেয়ে ভালো হয় যদি আপনার একটি একাউন্ট থাকে। যদি না থাকে এখনই বিনামূল্যে খুলে নিন এখানে ক্লিক করে <Link className='italic text-lime-500 underline' to={'/একাউন্ট খুলুন'}> একাউন্ট খুলুন  </Link> আপনি সঠিক তথ্য দিয়ে একাউন্টটি খুলবেন, আপনি যদি ড্রাইভার হন তাহলে ড্রাইভার সিলেক্ট করবেন আর যদি যাত্রী হন তাহলে যাত্রী সিলেক্ট করবেন।তারপর শর্তানুযায়ী আপনার নাম,পেশা ছবি ইত্যাদি দিবেন।তাহলেই আপনার একটি একাউন্ট খুলা হয়ে যাবে। আর আপনি যেকোনো সুযোগ সুবিধা পেতে পারবেন। টাকা পয়সা লেনদেন করার জন্য যদি বিকাশ/নগদ/রকেট থাকে তাহলে গাড়ি ভাড়া নিয়ে কোনো ঝামেলা থাকবে না।না থাকলেও সমস্যা নেই তবে একটা বিকাশ একাউন্ট থাকা অবশ্যই ভালো।
 <br />
                     এছাড়াও আপনি যদি কোনো সমস্যায় পড়েন অথবা আলাদাভাবে
                      আরো কোনো বিশেষ সুবিধা চান তাহলে <Link className='italic text-lime-500 underline' to={'/আপনার সমস্যা'}> আপনার সমস্যা </Link> এখানে গিয়ে আপনার মূল্যবান মন্তব্য দিয়ে আমাদের সহায়তা করতে পারেন।
@@ -120,7 +121,7 @@ const Banner = () => {
                 </div>
             </div>
             <div className="mx-auto text-center">
-                <Link className='md:w-3/12 '>
+                <Link to={'/login'} className='md:w-3/12 '>
                 <button className="btn animate-gradient w-[300px] mt-4 md:w-3/12 bg-gradient-to-r from-green-700 via-yellow-400 to-red-500  animate-gradient text-white font-bold text-xl">একাউন্ট খুলুন</button>
                 </Link>
             </div>

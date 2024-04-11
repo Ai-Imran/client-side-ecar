@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
+import './style.css'
 
 
 const Main = () => {
     return (
-        <div>
+        <div className="backimage">
            <Navbar/>
             <Outlet/>
         </div>

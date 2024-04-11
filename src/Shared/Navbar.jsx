@@ -5,7 +5,7 @@ import { RiMenuUnfoldLine } from "react-icons/ri";
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar pt-8">
                 <div className="flex flex-row-reverse justify-between ">
                     {/* <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn text-white btn-ghost lg:hidden">
@@ -15,37 +15,43 @@ const Navbar = () => {
                            
                         </ul>
                     </div> */}
-                    <div className="drawer drawer-end">
+                    <div className="drawer lg:hidden drawer-end">
                      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
                      <div className="drawer-content">
                        {/* Page content here */}
-                       <label htmlFor="my-drawer-4" className="drawer-button text-white text-4xl "><RiMenuUnfoldLine className="ml-[140px]"/></label>
+                       <img className="text-white  absolute" src="" alt="fdfdf" />
+
+                       <label htmlFor="my-drawer-4" className="drawer-button text-white text-4xl ">  <RiMenuUnfoldLine className="ml-[140px]"/></label>
                      </div> 
                      <div className="drawer-side">
                        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                       <ul className="menu backimage space-y-6 p-4 w-3/4 min-h-full  text-base-content">
+                       
+                       <ul className="menu backimage space-y-6 p-4 w-3/4 min-h-full text-xl font-bold text-base-content">
                          {/* Sidebar content here */}
-                         <NavLink to={'/'}>হোম</NavLink>
-                       <NavLink>সার্ভিস শুরু করুন</NavLink>
-                       <NavLink>যোগাযােগ</NavLink>
-                       <NavLink>আপনার সমস্যা</NavLink>
-                       <NavLink>আমাদের সহায়তা</NavLink>
-                       <NavLink>আমাদের সর্ম্পকে</NavLink>
-                        <NavLink>লগইন করুন</NavLink>
-                       </ul>
+                        <img className="text-white" src="" alt="fdfdf" />
+                        <NavLink to={'/'}>হোম</NavLink>
+                       <NavLink to={'/startSerives'}>সার্ভিস দেখুন</NavLink>
+                       <NavLink to={'/contact'}>যোগাযােগ</NavLink>
+                       <NavLink to={'/problem'}>আপনার সমস্যা</NavLink>
+                       <NavLink to={'/help'}>আমাদের সহায়তা</NavLink>
+                       <NavLink to={'/ourSelf'}>আমাদের সর্ম্পকে</NavLink>
+                        <NavLink to={'/login'}>লগইন করুন</NavLink>
+                     </ul>
+                       
                      </div>
+                     
                 </div>
                     <Link to={'/'} className="btn text-lime-500 btn-ghost text-3xl">E-Car</Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu space-x-6 text-[18px] font-bold menu-horizontal px-1">
+                <div className="navbar-center  hidden lg:flex">
+                    <ul className="menu space-x-6 text-[22px] ml-16 font-bold menu-horizontal px-1">
                        <NavLink to={'/'}>হোম</NavLink>
-                       <NavLink>সার্ভিস শুরু করুন</NavLink>
-                       <NavLink>যোগাযােগ</NavLink>
-                       <NavLink>আপনার সমস্যা</NavLink>
-                       <NavLink>আমাদের সহায়তা</NavLink>
-                       <NavLink>আমাদের সর্ম্পকে</NavLink>
-                        <NavLink>লগইন করুন</NavLink>
+                       <NavLink to={'/startSerives'}>সার্ভিস দেখুন</NavLink>
+                       <NavLink to={'/contact'}>যোগাযােগ</NavLink>
+                       <NavLink to={'/problem'}>আপনার সমস্যা</NavLink>
+                       <NavLink to={'/help'}>আমাদের সহায়তা</NavLink>
+                       <NavLink to={'/ourSelf'}>আমাদের সর্ম্পকে</NavLink>
+                        <NavLink to={'/login'}>লগইন করুন</NavLink>
 
                        </ul>
                 </div>

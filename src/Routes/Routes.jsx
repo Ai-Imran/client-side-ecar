@@ -7,6 +7,7 @@ import Contact from "../Pages/Contact";
 import Help from "../Pages/Help";
 import OurSelf from "../Pages/OurSelf";
 import Problem from "../Pages/Provlem";
+import Terms from "../Pages/Terms";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
        {
         path: 'problem',
         element: <Problem/>
+       },
+       {
+        path: 'terms&condition',
+        element: <Terms/>
        }
       ]
     },

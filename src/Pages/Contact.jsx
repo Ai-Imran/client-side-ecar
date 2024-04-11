@@ -35,7 +35,11 @@ const Contact = () => {
                 <div className='lg:w-1/2 p-4  text-[22px]'>
                     <p className='text-justify md:px-4 text-gray-200'>
                     প্রিয় গ্রাহক, <br />
-                    আমাদের সার্ভিস এর সাথে যুক্ত থাকার জন্য আপনাকে অসংখ্য ধন্যবাদ। আপনি যদি একজন যাত্রী হয়ে  থাকেন আর কোনে সমস্যায় পড়ে থাকেন তাহলে সরাসরি আমাদের জানাতে পারেন এখানে ক্লিক করে <Link to={'/problem'}><span className="text-lime-500 underline italic"> আপনার সমস্যা </span></Link> <br /> <br /> আর যদি একজন ড্রাইভার হয়ে থাকেন। আর আপনার ভাড়া নিয়ে সন্তুষ্ট না হন। অথবা যাত্রী নিয়ে কোনো সমস্যায় পড়েন , সরাসরি আমাদের কল করুন অথবা আমাদের গ্রুপ বা বিভিন্ন সোস্যাল মিডিয়ায় জানাতে পারেন। অথবা আপনি চাইলে বিস্তারিত লিখে জানাতে পারেন এখানে ক্লিক করে  <Link to={'/problem'}><span className="text-lime-500 underline italic"> আপনার সমস্যা </span> </Link>  আশা করি খুব দ্রুত আপনার সমাধান পেয়ে যাবেন। <br /> ধন্যবাদ।
+                    আমাদের সার্ভিস এর সাথে যুক্ত থাকার জন্য আপনাকে অসংখ্য ধন্যবাদ। আপনি যদি একজন যাত্রী হয়ে  থাকেন আর কোনে সমস্যায় পড়ে থাকেন তাহলে সরাসরি আমাদের জানাতে পারেন এখানে ক্লিক করে <Link to={'/problem'}><span className="text-lime-500 underline italic"> আপনার সমস্যা </span></Link> <br /> <br /> আর যদি একজন ড্রাইভার হয়ে থাকেন। আর আপনার ভাড়া নিয়ে সন্তুষ্ট না হন। অথবা যাত্রী নিয়ে কোনো সমস্যায় পড়েন , সরাসরি আমাদের কল করুন অথবা আমাদের গ্রুপ বা বিভিন্ন সোস্যাল মিডিয়ায় জানাতে পারেন। অথবা আপনি চাইলে বিস্তারিত লিখে জানাতে পারেন এখানে ক্লিক করে  <Link to={'/problem'}><span className="text-lime-500 underline italic"> আপনার সমস্যা </span> </Link>  আশা করি খুব দ্রুত আপনার সমাধান পেয়ে যাবেন। <br />
+                    <span className='text-yellow-400'>
+                    তবে যে সমস্যা গুলো তে আমরা আপনাকে কোনোভাবেই সহায়তা করবো না তা এখানে ক্লিক করে জেনে নিন <Link ink to={'/terms&condition'}><span className="text-lime-500 underline italic px-1"> আমাদের নীতিমালা </span> </Link> না হলে পরে আমরা দায়ি থাকবো না।
+                    </span> <br /> 
+                     ধন্যবাদ।
                     </p>
                   <div className="mx-auto text-center">
                     <Link to={'/signup'} className='bg-gradient-to-r from-purple-600 via-red-600 mx-auto text-center to-yellow-300 p-2 rounded-md font-semibold cursor-pointer '> <input className='mt-10 mx-auto w-[260px] cursor-pointer' type="button" value="একাউন্ট খুলুন" /></Link>

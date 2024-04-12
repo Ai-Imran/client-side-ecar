@@ -48,7 +48,7 @@ const Problem = () => {
                         </p>
                     </div>
                    <div className="mx-auto text-center">
-                   <textarea name="" className='  text-white px-3 bg-gray-700  py-5 border-none outline-none rounded-md w-11/12 lg:h-[620px] lg:w-[600px]' placeholder='এখানে লিখুন' id="" cols="18" rows="10"></textarea>
+                   <textarea name="" className='  text-white px-3 bg-gray-700  py-5 border-none outline-none rounded-md w-11/12 lg:h-[620px] lg:w-[600px]' placeholder='এখানে লিখুন .......' id="" cols="18" rows="10"></textarea>
                    </div>
                     
                     <div className='bg-gradient-to-r from-purple-600 mt-2 via-red-600 text-center  to-yellow-300 lg:mx-0 mx-4 py-2 rounded-md font-semibold cursor-pointer '> 

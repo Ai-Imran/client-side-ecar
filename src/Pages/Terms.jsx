@@ -3,7 +3,7 @@
 const Terms = () => {
     return (
         <div className="text-gray-300 min-h-screen pb-10">
-            <p className="px-4 text-justify mt-10 text-[20px] w-3/4 mx-auto">
+            <p className="px-4 text-justify mt-10 md:text-[20px] w-11/12 mx-auto">
             তবে যে সমস্যা গুলোর জন্য আমরা কখনোই দায়ী থাকবো না। <br />
            <span className="text-yellow-300">
            ⚠ আমাদের সাথে যোগাযোগ না করে যাত্রী কে কোথাও পৌঁছে দিয়ে আসলে। <br/>

@@ -41,7 +41,7 @@ const Signup = () => {
           </div>
         </div>
         <div className="lg:w-3/4  mt-8">
-          <p className="text-white md:text-center ml-6 md:text-xl font-bold">
+          <p className="text-rose-600 md:text-center ml-6 md:text-xl font-bold">
             {selection}
           </p>
             <p className="text-center font-bold text-white text-xl mt-4">আপনার যদি একাউন্ট থাকে তাহলে <Link ink to={'/login'}><span className="text-lime-500 underline italic px-1"> লগইন করুন </span> </Link> 

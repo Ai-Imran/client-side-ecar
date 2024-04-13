@@ -1,4 +1,4 @@
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { Outlet, useNavigate, useLocation, Link } from "react-router-dom";
 import { useState } from "react";
 import passenger from '../assets/passenger.png';
 import driver from '../assets/driver.jpeg';
@@ -44,6 +44,9 @@ const Signup = () => {
           <p className="text-white md:text-center ml-6 md:text-xl font-bold">
             {selection}
           </p>
+            <p className="text-center font-bold text-white text-xl mt-4">আপনার যদি একাউন্ট থাকে তাহলে <Link ink to={'/login'}><span className="text-lime-500 underline italic px-1"> লগইন করুন </span> </Link> 
+            </p>
+          
           <Outlet />
         </div>
       </div>

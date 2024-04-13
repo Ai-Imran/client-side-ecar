@@ -54,11 +54,10 @@ const Passenger = () => {
                 <label className="font-bold" htmlFor="name">আপনার নাম লিখুন</label>
                 <input required className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block " type="text" name="name" placeholder="এখানে আপনার নাম লিখুন" />
                  </div>
-                 <div className="my-2">
-                    
-        <label className="font-bold" htmlFor="number">
-          চলমানকৃত মোবাইল নাম্বারটি লিখুন
-        </label>
+                 <div className="my-2">                  
+             <label className="font-bold" htmlFor="number">
+               চলমানকৃত মোবাইল নাম্বারটি লিখুন
+             </label>
              <input
                required
                className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block"
@@ -114,11 +113,11 @@ const Passenger = () => {
                 আমাদের <Link className="text-lime-500 italic underline mx-1" to={'/terms&condition'}>নীতিমালা</Link> মনে চুলন।
                 </p>
                  </div>
-                 <div className="mx-auto  text-center">
-                    <div className='bg-gradient-to-r from-purple-600 via-red-600 mx-auto text-center  to-yellow-300 mt-5 p-2 rounded-md font-semibold cursor-pointer '>
+                <div className="mx-auto  text-center">
+                <div className='bg-gradient-to-r from-purple-600 via-red-600 mx-auto text-center  to-yellow-300 mt-5 p-2 rounded-md font-semibold cursor-pointer '>
                  <input className=' lg:w-[350px] text-center mx-auto font-bold text-white cursor-pointer' type="submit" value="সাবমিট করুন" />
-                    </div>
-                  </div>
+                </div>
+                 </div>
 
             </form>
         </div>

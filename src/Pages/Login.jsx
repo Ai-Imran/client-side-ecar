@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -175,6 +175,13 @@ const Login = () => {
                         </div>
                     </div>
                 </form>
+                <div className="mx-auto lg:w-1/2 w-11/12">
+                    <p className="text-white font-bold text-justify">
+                    আপনি চাইলে <FaGoogle className='inline-block mx-2 text-2xl text-lime-500'/> গুগল দিয়ে একাউন্ট খুলতে পারেন কিন্তু এতে আমাদের এআই টুলস / অ্যালগরিদম আপনাকে খুঁজতে পারে না তাই সকল তথ্য দিয়ে <Link to={'/signup'}>
+                        <span className="text-lime-500 underline italic px-1"> একাউন্ট খুলুন </span>
+                    </Link>
+                    </p>
+                </div>
             </div>
         </div>
     );

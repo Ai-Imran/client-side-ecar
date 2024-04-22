@@ -44,6 +44,7 @@ const Navbar = () => {
                 <div className="navbar-center  hidden lg:flex">
                     <ul className="menu space-x-6 text-[22px] ml-16 font-bold menu-horizontal px-1">
                        <NavLink to={'/'}>হোম</NavLink>
+                       <NavLink to={'/user-start'}>শুরু করুন</NavLink>
                        <NavLink to={'/startSerives'}>সার্ভিস দেখুন</NavLink>
                        <NavLink to={'/contact'}>যোগাযােগ</NavLink>
                        <NavLink to={'/problem'}>আপনার সমস্যা</NavLink>

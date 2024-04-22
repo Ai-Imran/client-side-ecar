@@ -11,6 +11,7 @@ import Terms from "../Pages/Terms";
 import Signup from "../Pages/Signup";
 import Passenger from "../Pages/Passenger";
 import Driver from "../Pages/Driver";
+import UserStartService from "../Pages/UserStartService";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
        {
         path:'startSerives',
         element : <StartService/>
+       },
+       {
+        path: 'user-start',
+        element: <UserStartService/>
        },
        {
         path: 'login',

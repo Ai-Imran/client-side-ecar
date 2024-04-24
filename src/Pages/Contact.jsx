@@ -42,7 +42,7 @@ const Contact = () => {
                      ধন্যবাদ।
                     </p>
                   <div className="mx-auto text-center">
-                    <Link to={'/signup'} className='bg-gradient-to-r from-purple-600 via-red-600 mx-auto text-center to-yellow-300 p-2 rounded-md font-semibold cursor-pointer '> <input className='mt-10 mx-auto w-[260px] cursor-pointer' type="button" value="একাউন্ট খুলুন" /></Link>
+                    <Link to={'/signup'} className='bg-emerald-950 mx-auto text-center to-yellow-300 p-2 rounded-md font-semibold cursor-pointer '> <input className='mt-10 mx-auto w-[260px] cursor-pointer' type="button" value="একাউন্ট খুলুন" /></Link>
                   </div>
                 </div>
             </div>

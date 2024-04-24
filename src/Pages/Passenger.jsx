@@ -114,7 +114,7 @@ const Passenger = () => {
                 </p>
                  </div>
                 <div className="mx-auto  text-center">
-                <div className='bg-gradient-to-r from-purple-600 via-red-600 mx-auto text-center  to-yellow-300 mt-5 p-2 rounded-md font-semibold cursor-pointer '>
+                <div className='bg-emerald-950 mx-auto text-center  to-yellow-300 mt-5 p-2 rounded-md font-semibold cursor-pointer '>
                  <input className=' lg:w-[350px] text-center mx-auto font-bold text-white cursor-pointer' type="submit" value="সাবমিট করুন" />
                 </div>
                  </div>

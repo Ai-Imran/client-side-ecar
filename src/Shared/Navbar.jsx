@@ -28,6 +28,7 @@ const Navbar = () => {
                          {/* Sidebar content here */}
                         <img className="text-white" src="" alt="fdfdf" />
                         <NavLink to={'/'}>হোম</NavLink>
+                        <NavLink to={'/user-start'}>শুরু করুন</NavLink>
                        <NavLink to={'/startSerives'}>সার্ভিস দেখুন</NavLink>
                        <NavLink to={'/contact'}>যোগাযােগ</NavLink>
                        <NavLink to={'/problem'}>আপনার সমস্যা</NavLink>

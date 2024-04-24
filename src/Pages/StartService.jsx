@@ -15,7 +15,7 @@ const StartService = () => {
                     একাউন্ট খুলতে যদি কোনো রকম সমস্যায় পড়েন তাহলে এখানে ক্লিক করে  <Link to={'/contact'}><span className="text-lime-500 underline italic">যোগাযোগ </span></Link> এখনই আমাদেরকে আপনার সমস্যার কথা জানান।আমরা সবসময় আপনাদের যেকোনো সমস্যার সমাধান দিতে প্রস্তুত।
                      </p>
                     <div className="mx-auto text-center">
-                    <Link to={'/signup'} className='bg-gradient-to-r from-purple-600 via-red-600 mx-auto text-center to-yellow-300 p-2 rounded-md font-semibold cursor-pointer '> <input className='mt-10 mx-auto w-[260px] cursor-pointer' type="button" value="একাউন্ট খুলুন" /></Link>
+                    <Link to={'/signup'} className='bg-emerald-950 mx-auto text-center to-yellow-300 p-2 rounded-md font-semibold cursor-pointer '> <input className='mt-10 mx-auto w-[260px] cursor-pointer' type="button" value="একাউন্ট খুলুন" /></Link>
                     </div>
                 </div>
             </div>

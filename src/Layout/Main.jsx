@@ -28,7 +28,7 @@ const Main = () => {
     }, [location.pathname]);
 
     return (
-        <div className="backimage">
+        <div className="backimage max-w-screen-2xl">
             <div className={`sticky top-0 pb-2 bg-[#192a56] transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
                 <Navbar />
             </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react";
 
 const UserStartService = () => {
     const [publicPrice, setPublicPrice] = useState(0);
@@ -10,7 +10,6 @@ const UserStartService = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [nullError, setNullError] = useState("আপনার যায়গা সিলেক্ট করুন");
 
-    
     const handlePlaceChange = (e) => {
         const selectedValue = e.target.value;
         setSelectedPlace(selectedValue);
@@ -19,46 +18,50 @@ const UserStartService = () => {
             setNullError("আপনার যায়গা সিলেক্ট করুন ")
             setPublicPrice(0);
             setTotalCost(0);
+            setTotalPassenger(0); // Reset the total passenger count
+            setErrorMessage(""); // Reset the error message
             return;
         } else if (selectedValue === "homna to goaribhanga") {
             setPublicPrice(15);
+            setTotalCost(15 + taxPrice);
             setNullError("");
         } else if (selectedValue === "homna to batakandi") {
             setPublicPrice(25);
+            setTotalCost(25 + taxPrice);
             setNullError("");
         } else {
             setNullError("");
             setPublicPrice(0);
         }
-      
-        // Recalculate total cost based on updated public price and total passenger count
-        setTotalCost(publicPrice ); // Add taxPrice to publicPrice
     };
     
-
     const handlePublicNumber = (e) => {
         const selectedValue = parseInt(e.target.value); // Convert to number
-
+    
         if (isNaN(selectedValue) || selectedValue === 0) {
             // Show error message
             setErrorMessage("Please enter a valid number greater than 0.");
             return; // Exit the function early
         } 
-        setErrorMessage('')
-        setTotalPassenger(selectedValue );
-        setTotalCost((publicPrice + taxPrice) * selectedValue); // Calculate total cost based on updated total passenger count
-    }
-    
+        setErrorMessage('');
+        setTotalPassenger(selectedValue);
+        
+        // Recalculate total cost based on updated total passenger count
+        setTotalCost((publicPrice + taxPrice) * selectedValue); 
+    };
     
     const handleCarChange = (e) => {
-        const selectedValue = e.target.value;
+        // const selectedValue = e.target.value;
         // Adjust cost based on selected car
-      
-      };
+    };
+    const totalValue = () => {
+        setTotalCost((publicPrice + taxPrice) * totalPassenger)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
     }
+    // console.log(totalCost);
 
     return (
         <div className="text-white px-3 min-h-screen">
@@ -148,7 +151,7 @@ const UserStartService = () => {
                         <p>অন্যান্য খরচ</p> <span> {othersCost} টাকা</span>
                     </div>
                     <div className="flex justify-between">
-                        <p>সর্বমোট খরচ</p> <span> {totalCost} টাকা</span>
+                        <p>সর্বমোট খরচ</p> <span onClick={totalValue}>show</span> <span> {totalCost} টাকা</span>
                     </div>
                 </div>
 

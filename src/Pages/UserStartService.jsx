@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const UserStartService = () => {
     const [publicPrice, setPublicPrice] = useState(0);
@@ -50,14 +50,16 @@ const UserStartService = () => {
         setTotalCost((publicPrice + taxPrice) * selectedValue); 
     };
     
-    const handleCarChange = (e) => {
+    const handleCarChange = () => {
         // const selectedValue = e.target.value;
         // Adjust cost based on selected car
     };
-    const totalValue = () => {
-        setTotalCost((publicPrice + taxPrice) * totalPassenger)
-    }
 
+    useEffect(() => {
+        // Calculate total cost whenever publicPrice, totalPassenger, or taxPrice changes
+        setTotalCost((publicPrice + taxPrice) * totalPassenger);
+      }, [publicPrice, totalPassenger, taxPrice]);
+    
     const handleSubmit = (e) => {
         e.preventDefault()
     }
@@ -151,7 +153,7 @@ const UserStartService = () => {
                         <p>অন্যান্য খরচ</p> <span> {othersCost} টাকা</span>
                     </div>
                     <div className="flex justify-between">
-                        <p>সর্বমোট খরচ</p> <span onClick={totalValue}>show</span> <span> {totalCost} টাকা</span>
+                        <p>সর্বমোট খরচ</p> <span> {totalCost} টাকা</span>
                     </div>
                 </div>
 

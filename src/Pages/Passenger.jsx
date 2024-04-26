@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProviders";
 
 
 const Passenger = () => {
 
+  const {createUser,updateUserProfile} = useContext(AuthContext)
     // image size validate
     const [errorMessage, setErrorMessage] = useState('');
     // password
@@ -27,6 +29,12 @@ const Passenger = () => {
       const gender = event.target.gender.value;
       const password = event.target.password.value;
       const photoFile = event.target.photo.files[0]?.name;
+      createUser(email,password)
+      .then((res) => {
+        updateUserProfile(name,photoFile,phoneNumber)
+        console.log(res.user);
+      })
+
   
     // Regular expression to match Bangladeshi phone numbers
     const bdPhoneNumberPattern = /^(?:\+?88|0088)?01[3-9]\d{8}$/;

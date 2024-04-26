@@ -1,13 +1,20 @@
 import { Link, NavLink } from "react-router-dom";
 import './style.css'
-import { RiMenuUnfoldLine } from "react-icons/ri";
 import { AiFillHome } from "react-icons/ai";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { FaCarSide } from "react-icons/fa";
 import { BsSendFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa6";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProviders";
 
 const Navbar = () => {
+
+    const {user,logOut} = useContext(AuthContext)
+
+    const handleLogout = () => {
+        logOut()
+    }
     return (
         <div >
             <div className="navbar pt-1 md:pt-8">
@@ -28,22 +35,26 @@ const Navbar = () => {
                          {/* Sidebar content here */}
                         <img className="text-white" src="" alt="fdfdf" />
                         <NavLink to={'/'}>হোম</NavLink>
-                        <NavLink to={'/user-start'}>শুরু করুন</NavLink>
-                       <NavLink to={'/startSerives'}>সার্ভিস দেখুন</NavLink>
+                        {
+                            user ? <NavLink to={'/user-start'}>শুরু করুন</NavLink> : <NavLink to={'/startSerives'}>সার্ভিস দেখুন</NavLink>
+                        }
+                       
                        <NavLink to={'/contact'}>যোগাযােগ</NavLink>
                        <NavLink to={'/problem'}>আপনার সমস্যা</NavLink>
                        <NavLink to={'/help'}>আমাদের সহায়তা</NavLink>
                        <NavLink to={'/ourSelf'}>আমাদের সর্ম্পকে</NavLink>
-                        <NavLink to={'/login'}>লগইন করুন</NavLink>
+                       {
+                        user ? <span onClick={handleLogout} className="text-yellow-500">Logout</span> :  <NavLink to={'/login'}>লগইন করুন</NavLink>
+                       }
                      </ul>
                      </div>
                      
                 </div>
 
-                    <Link to={'/'} className="btn text-lime-500 btn-ghost text-3xl">IsmaqW</Link>
+                    <Link to={'/'} className=" text-lime-500 hover:shadow-xl hover:text-lime-300 text-3xl">IsmaqW</Link>
                 </div>
                 <div className="navbar-center  hidden lg:flex">
-                    <ul className="menu space-x-6 text-[22px] ml-16 font-bold menu-horizontal px-1">
+                    <ul className="menu space-x-4 text-[22px] ml-16 font-bold menu-horizontal px-1">
                        <NavLink to={'/'}>হোম</NavLink>
                        <NavLink to={'/user-start'}>শুরু করুন</NavLink>
                        <NavLink to={'/startSerives'}>সার্ভিস দেখুন</NavLink>
@@ -51,7 +62,10 @@ const Navbar = () => {
                        <NavLink to={'/problem'}>আপনার সমস্যা</NavLink>
                        <NavLink to={'/help'}>আমাদের সহায়তা</NavLink>
                        <NavLink to={'/ourSelf'}>আমাদের সর্ম্পকে</NavLink>
-                        <NavLink to={'/login'}>লগইন করুন</NavLink>
+                       <span className="text-purple-400">{user?.displayName}</span>
+                       {
+                        user ? <span onClick={handleLogout} className="text-yellow-500">Logout</span> :  <NavLink to={'/login'}>লগইন করুন</NavLink>
+                       }
 
                        </ul>
                 </div>
@@ -61,7 +75,9 @@ const Navbar = () => {
             <div className="grid  justify-items-center text-white grid-cols-5 lg:hidden text-3xl mt-1">
                 <NavLink to={'/'}><AiFillHome className=" transition delay-100" /></NavLink>
                 <NavLink  to={'/contact'}><FaFacebookMessenger className=" transition delay-100"/></NavLink>
-                <NavLink to={'/startSerives'}><FaCarSide className=" transition delay-100" /></NavLink>
+               {
+                user ?  <NavLink to={'/user-start'}><FaCarSide className=" transition delay-100" /></NavLink> :  <NavLink to={'/startSerives'}><FaCarSide className=" transition delay-100" /></NavLink>
+               }
                 <NavLink to={'/problem'}><BsSendFill className=" transition delay-100"/></NavLink>
                 <label htmlFor="my-drawer-4" className="drawer-button text-white text-3xl ">  <FaUser className="transition delay-100 hover:text-purple-600"/></label>
       

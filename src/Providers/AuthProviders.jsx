@@ -32,15 +32,16 @@ const AuthProviders = ({ children }) => {
         return signOut(auth);
     }
 
-    const updateUserProfile = (name, photo) => {
+    const updateUserProfile = (name, photoFile,phoneNumber) => {
         return updateProfile(auth.currentUser, {
-            displayName: name, photoURL: photo
+            displayName: name, photoURL: photoFile, phoneNumber : phoneNumber
         });
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            console.log(currentUser);
 
         });
         return () => {

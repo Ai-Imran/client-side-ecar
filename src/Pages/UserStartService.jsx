@@ -51,8 +51,7 @@ const UserStartService = () => {
     };
     
     const handleCarChange = () => {
-        // const selectedValue = e.target.value;
-        // Adjust cost based on selected car
+       
     };
 
     useEffect(() => {

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import  { AuthContext } from '../Providers/AuthProviders';
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -9,6 +10,8 @@ const Login = () => {
     const [showPhoneNumberInput, setShowPhoneNumberInput] = useState(false);
     const [showPasswordField, setShowPasswordField] = useState(true); // State to control password field visibility
     const [phoneNumber, setPhoneNumber] = useState('');
+    const {signIn,googleSignIn} = useContext(AuthContext)
+    const navigate = useNavigate()
     // const [errorNumber, setErrorNumber] = useState('');
 
     const handleNameClick = () => {
@@ -38,6 +41,16 @@ const Login = () => {
         setShowPasswordField(true); // Show password field when clicking on back from phone number forget
         setShowPhoneNumberInput(false); // Hide phone number field when clicking on back from phone number forget
     };
+
+    const handleGoogle = () => {
+        googleSignIn()
+        .then(() => {
+            navigate('/user-start')
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -177,7 +190,7 @@ const Login = () => {
                 </form>
                 <div className="mx-auto lg:w-1/2 w-11/12">
                     <p className="text-white font-bold text-justify">
-                    আপনি চাইলে <FaGoogle className='inline-block mx-2 text-2xl text-lime-500'/> গুগল দিয়ে একাউন্ট খুলতে পারেন কিন্তু এতে আমাদের এআই টুলস / অ্যালগরিদম আপনাকে খুঁজতে পারে না তাই সকল তথ্য দিয়ে <Link to={'/signup'}>
+                    আপনি চাইলে <FaGoogle onClick={handleGoogle} className='inline-block mx-2 text-2xl text-lime-500'/> গুগল দিয়ে একাউন্ট খুলতে পারেন কিন্তু এতে আমাদের এআই টুলস / অ্যালগরিদম আপনাকে খুঁজতে পারে না তাই সকল তথ্য দিয়ে <Link to={'/signup'}>
                         <span className="text-lime-500 underline italic px-1"> একাউন্ট খুলুন </span>
                     </Link>
                     </p>

@@ -2,54 +2,63 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 
-
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
-
 
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
 
-    const createUser = (email, password) => {
+    const createUser = async (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const newUser = userCredential.user;
+        setUser(newUser);
+        setLoading(false);
+        return newUser;
     }
 
-    const signIn = (email, password) => {
+    const signIn = async (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const signedInUser = userCredential.user;
+        setUser(signedInUser);
+        setLoading(false);
+        return signedInUser;
     }
 
-    const googleSignIn = () => {
+    const googleSignIn = async () => {
         setLoading(true);
-        return signInWithPopup(auth, googleProvider);
+        const userCredential = await signInWithPopup(auth, googleProvider);
+        const signedInUser = userCredential.user;
+        setUser(signedInUser);
+        setLoading(false);
+        return signedInUser;
     }
 
-    const logOut = () => {
+    const logOut = async () => {
         setLoading(true);
-        return signOut(auth);
+        await signOut(auth);
+        setUser(null);
+        setLoading(false);
     }
 
-    const updateUserProfile = (name, photoFile,phoneNumber) => {
-        return updateProfile(auth.currentUser, {
-            displayName: name, photoURL: photoFile, phoneNumber : phoneNumber
+    const updateUserProfile = async (name, photoFile, phoneNumber) => {
+        await updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photoFile,
+            phoneNumber: phoneNumber
         });
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            console.log(currentUser);
-
+            setLoading(false);
         });
-        return () => {
-            return unsubscribe();
-        }
+        return unsubscribe;
     }, [])
-
-
 
     const authInfo = {
         user,
@@ -60,6 +69,7 @@ const AuthProviders = ({ children }) => {
         logOut,
         updateUserProfile
     }
+
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

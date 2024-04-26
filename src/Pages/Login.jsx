@@ -1,84 +1,36 @@
 import React, { useContext, useState } from 'react';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import  { AuthContext } from '../Providers/AuthProviders';
+import { AuthContext } from '../Providers/AuthProviders';
 
 const Login = () => {
     const [show, setShow] = useState(false);
-    const [showNameInput, setShowNameInput] = useState(true);
-    const [showEmailInput, setShowEmailInput] = useState(false);
-    const [showPhoneNumberInput, setShowPhoneNumberInput] = useState(false);
-    const [showPasswordField, setShowPasswordField] = useState(true); // State to control password field visibility
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const {signIn,googleSignIn} = useContext(AuthContext)
-    const navigate = useNavigate()
-    // const [errorNumber, setErrorNumber] = useState('');
-
-    const handleNameClick = () => {
-        setShowNameInput(false);
-        setShowEmailInput(true);
-        setShowPasswordField(true); // Ensure password field is visible when switching from phone number to email
-        setShowPhoneNumberInput(false); // Hide phone number field when switching from phone number to email
-    };
-
-    const handleEmailClick = () => {
-        setShowNameInput(true);
-        setShowEmailInput(false);
-        setShowPasswordField(true); // Ensure password field is visible when switching from phone number to email
-        setShowPhoneNumberInput(false); // Hide phone number field when switching from email to phone number
-    };
-
-    const handlePhoneClick = () => {
-        setShowNameInput(false);
-        setShowEmailInput(false);
-        setShowPhoneNumberInput(true);
-        setShowPasswordField(false); // Hide password field when clicking on phone number forget
-    };
-
-    const handleBackToPasswordClick = () => {
-        setShowNameInput(true);
-        setShowEmailInput(false);
-        setShowPasswordField(true); // Show password field when clicking on back from phone number forget
-        setShowPhoneNumberInput(false); // Hide phone number field when clicking on back from phone number forget
-    };
+    const { signIn, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleGoogle = () => {
         googleSignIn()
-        .then(() => {
-            navigate('/user-start')
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }
+            .then(() => {
+                navigate('/user-start');
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = event => {
         event.preventDefault();
 
-        
-        const name = showNameInput ? event.target.name.value : '';
-        const password = showPasswordField ? event.target.password.value : '';
-        const email = showEmailInput ? event.target.email.value : '';
+        const email = event.target.email.value;
+        const password = event.target.password.value;
 
-        // Conditionally access phone number field value
-        const phoneNumber = showPhoneNumberInput ? event.target.number.value : '';
-
-
-    
-        // // Log data to console
-        // console.log('Name:', name);
-        // console.log('Phone Number:', phoneNumber);
-        // console.log('Email:', email);
-        // console.log('Password:', password);
-
-
-        // const bdPhoneNumberPattern = /^(?:\+?88|0088)?01[3-9]\d{8}$/;
-        // if (!bdPhoneNumberPattern.test(phoneNumber)) {
-        //     // setErrorNumber('এটি একটি বাংলাদেশী ফোন নম্বর নয়।');
-        // } else {
-        //     setErrorNumber('');
-        //     // Proceed with form submission or other actions
-        // }
+        signIn(email, password)
+            .then(res => {
+                navigate('/user-start');
+            })
+            .catch(err => {
+                console.log(err);
+            });
     };
 
     return (
@@ -87,112 +39,60 @@ const Login = () => {
                 <p className="text-center my-10 font-bold text-xl">
                     আপনার যদি কোনো একাউন্ট না থাকে তাহলে এখানে ক্লিক করে{' '}
                     <Link to={'/signup'}>
-                        <span className="text-lime-500 underline italic px-1"> একাউন্ট খুলুন </span>{' '}
+                        <span className="text-lime-500 underline italic px-1"> একাউন্ট খুলুন </span>
                     </Link>
                 </p>
                 <form onSubmit={handleSubmit} className="lg:w-1/2 mx-auto">
                     <div className="my-2">
-                        {showNameInput && (
-                            <>
-                                <label htmlFor="name" className="font-bold">
-                                    আপনি যে নামে একাউন্ট খুলেছিলেন ঐ নামটি লিখুন
-                                </label>
-                                <input
-                                    
-                                    className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block"
-                                    type="text"
-                                    name="name"
-                                    placeholder="এখানে আপনার নাম লিখুন"
-                                />
-                                <span
-                                    className="text-lime-500 underline cursor-pointer font-bold px-1"
-                                    onClick={handleNameClick}
-                                >
-                                    আমার নাম ভুলে গেছি
-                                </span>
-                            </>
-                        )}
-                        {showEmailInput && (
-                            <>
-                                <label htmlFor="email" className="font-bold">
-                                    আপনি যে ইমেইল একাউন্ট খুলেছিলেন ঐ ইমেলটি লিখুন
-                                </label>
-                                <input
-                                    
-                                    className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block"
-                                    type="email"
-                                    name="email"
-                                    placeholder="এখানে আপনার ইমেইল লিখুন"
-                                />
-                                <span
-                                    className="text-lime-500 underline cursor-pointer font-bold px-1"
-                                    onClick={handleEmailClick}
-                                >
-                                    আমার ইমেইল ভুলে গেছি
-                                </span>
-                            </>
-                        )}
-                        {showPhoneNumberInput && (
-                            <>
-                                <label className="font-bold" htmlFor="number">
-                                আপনি যে মোবাইল নাম্বারটি দিয়ে একাউন্টটি খুলেছিলেন ঐ নাম্বারটি লিখুন  
-                                </label>
-                                <input
-                                    
-                                    className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block"
-                                    type="tel"
-                                    name="number"
-                                    value={phoneNumber}
-                                    onChange={(e) => setPhoneNumber(e.target.value)}
-                                    placeholder="এখানে আপনার মোবাইল নাম্বার লিখুন"
-                                />
-                                <span className="text-lime-500 underline cursor-pointer font-bold px-1" onClick={handleBackToPasswordClick}>
-                                    মোবাইল নাম্বার ভুলে গেছি
-                                </span>
-                            </>
-                        )}
-                        {/* {errorNumber && <p className="text-yellow-500">{errorNumber}</p>} */}
+                        <label htmlFor="email" className="font-bold">
+                            আপনি যে ইমেইল একাউন্ট খুলেছিলেন ঐ ইমেলটি লিখুন
+                        </label>
+                        <input
+                            className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block"
+                            type="email"
+                            name="email"
+                            placeholder="এখানে আপনার ইমেইল লিখুন"
+                        />
                     </div>
                     <div className="my-2">
-                        {showPasswordField && (
-                            <>
-                                <label className="font-bold lg:relative" htmlFor="password">
-                                    আপনি যে পাসওয়ার্ড দিয়ে একাউন্টটি খুলেছিলেন ঐ পাসওয়ার্ডটি লিখুন
-                                </label>
-                                <input
-                                    
-                                    className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block"
-                                    type={show ? 'text' : 'password'}
-                                    name="password"
-                                    placeholder="এখানে পাসওয়ার্ড লিখুন"
-                                />
-                                <span
-                                    onClick={() => setShow(!show)}
-                                    className="ml-[240px] absolute -mt-8 text-purple-500 text-xl lg:ml-[480px] cursor-pointer"
-                                >
-                                    {show ? <FaEyeSlash /> : <FaEye />}
-                                </span>
-                                <span className="text-lime-500 underline cursor-pointer font-bold px-1" onClick={handlePhoneClick}>
-                                    পাসওয়ার্ড ভুলে গেছি
-                                </span>
-                            </>
-                        )}
-                        <div className="mx-auto text-center">
-                            <div className="bg-emerald-950 mx-auto text-center to-yellow-300 mt-5 lg:mr-12 p-2 rounded-md font-semibold cursor-pointer">
-                                <input
-                                    className="lg:w-[310px] text-center mx-auto font-bold text-white cursor-pointer"
-                                    type="submit"
-                                    value="লগইন করুন"
-                                />
-                            </div>
+                        <label className="font-bold lg:relative" htmlFor="password">
+                            আপনি যে পাসওয়ার্ড দিয়ে একাউন্টটি খুলেছিলেন ঐ পাসওয়ার্ডটি লিখুন
+                        </label>
+                        <input
+                            className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block"
+                            type={show ? 'text' : 'password'}
+                            name="password"
+                            placeholder="এখানে পাসওয়ার্ড লিখুন"
+                        />
+                        <span
+                            onClick={() => setShow(!show)}
+                            className="ml-[240px] absolute -mt-8 text-purple-500 text-xl lg:ml-[480px] cursor-pointer"
+                        >
+                            {show ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                        <span className="text-lime-500 underline cursor-pointer font-bold px-1">
+                            পাসওয়ার্ড ভুলে গেছি
+                        </span>
+                    </div>
+                    <div className="mx-auto text-center">
+                        <div className="bg-emerald-950 mx-auto text-center to-yellow-300 mt-5 lg:mr-12 p-2 rounded-md font-semibold cursor-pointer">
+                            <input
+                                className="lg:w-[310px] text-center mx-auto font-bold text-white cursor-pointer"
+                                type="submit"
+                                value="লগইন করুন"
+                            />
                         </div>
                     </div>
                 </form>
                 <div className="mx-auto lg:w-1/2 w-11/12">
                     <p className="text-white font-bold text-justify">
-                    আপনি চাইলে <FaGoogle onClick={handleGoogle} className='inline-block mx-2 text-2xl text-lime-500'/> গুগল দিয়ে একাউন্ট খুলতে পারেন কিন্তু এতে আমাদের এআই টুলস / অ্যালগরিদম আপনাকে খুঁজতে পারে না তাই সকল তথ্য দিয়ে <Link to={'/signup'}>
-                        <span className="text-lime-500 underline italic px-1"> একাউন্ট খুলুন </span>
-                    </Link>
+                        আপনি চাইলে{' '}
+                        <FaGoogle onClick={handleGoogle} className="inline-block mx-2 text-2xl text-lime-500" /> গুগল
+                        দিয়ে একাউন্ট খুলতে পারেন কিন্তু এতে আমাদের এআই টুলস / অ্যালগরিদম আপনাকে খুঁজতে পারে
+                        না তাই সকল তথ্য দিয়ে{' '}
+                        <Link to={'/signup'}>
+                            <span className="text-lime-500 underline italic px-1"> একাউন্ট খুলুন </span>
+                        </Link>
                     </p>
                 </div>
             </div>

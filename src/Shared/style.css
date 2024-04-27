@@ -29,3 +29,6 @@ ul a:hover{
         background-position: 0% 50%;
     }
 }
+.text-shadow {
+    box-shadow: rgba(88, 118, 255, 0.993) 0px 2px 7px 4px;
+  }

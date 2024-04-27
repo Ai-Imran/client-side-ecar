@@ -1,73 +1,74 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProviders";
 
 
 const Driver = () => {
 
-    // image size validate
-    const [errorMessage, setErrorMessage] = useState('');
-    // password
-    const [show, setShow] = useState(false);
-    const [phoneNumber, setPhoneNumber] = useState('');
-  const [errornumber, setErrornumber] = useState('');
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const [show, setShow] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [errorNumber, setErrorNumber] = useState('');
+  const [firebaseError, setFirebaseError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     setPhoneNumber(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const name = event.target.name.value;
     const phoneNumber = event.target.number.value;
     const email = event.target.email.value;
-    const age = event.target.year.value;
-    const gender = event.target.gender.value;
-    const address = event.target.address.value;
-    const vehicle = event.target.gender.value; // Changed to vehicle
-    const drivingDay = event.target.drivingday.value;
-    const earnings = event.target.earnings.value;
-    const experience = event.target.exprience.value; // Corrected from exprience to experience
-    const carOwner = event.target.carowner.value;
-    const license = event.target.licence.value;
-    const photoFile = event.target.photo.files[0]?.name;
+    const photoFile = event.target.photo.files[0];
     const password = event.target.password.value;
-    // console.log(name,
 
-    //     phoneNumber,
-    //     email,
-    //     age,
-    //     gender,
-    //     address,
-    //     vehicle,
-    //     drivingDay,
-    //     earnings,
-    //     experience,
-    //     carOwner,
-    //     license,
-    //     photoFile,
-    //     password,);
+    // Create user and update profile
+    try {
+      // Create user
+      const user = await createUser(email, password);
 
-    // Regular expression to match Bangladeshi phone numbers
+      // Upload image to ImgBB
+      const formData = new FormData();
+      formData.append('image', photoFile);
 
+      const response = await fetch('https://api.imgbb.com/1/upload?key=e6551fbbcd8ce09023687e3b82ecfd91', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      const imageData = await response.json();
+
+      // Update user profile with image URL
+      updateUserProfile(name, imageData.data.url);
+      
+      // Navigate to user-start
+      navigate('/user-start');
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        setFirebaseError('ইমেইল ইতিমধ্যে ব্যবহার করা হয়েছে।');
+      } else {
+        setFirebaseError('একটি অজানা ত্রুটি ঘটেছে।');
+      }
+      console.error('Error:', error);
+      // Handle error
+    }
+
+    // Validate phone number
     const bdPhoneNumberPattern = /^(?:\+?88|0088)?01[3-9]\d{8}$/;
     if (!bdPhoneNumberPattern.test(phoneNumber)) {
-        setErrornumber('এটি একটি বাংলাদেশী ফোন নম্বর নয়।');
+      setErrorNumber('এটি একটি বাংলাদেশী ফোন নম্বর নয়।');
+      return; // Stop submission if phone number is invalid
     } else {
-        setErrornumber('');
-      // Proceed with form submission or other actions
-    } }
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file && file.size > 1024 * 1024) { // 1 MB = 1024 * 1024 bytes
-      setErrorMessage('আপনার ছবির সাইজ ১এমবির বেশি হওয়া যাবে না');
-    } else {
-      setErrorMessage('');
+      setErrorNumber('');
     }
-    
-    };
+  };
+
+
 
     return (
         <div className="bg-gray-500 py-4 px-4 lg:px-10  lg:mb-10 lg:py-10 rounded-md mt-10 lg:mx-20 mx-4">
@@ -91,10 +92,12 @@ const Driver = () => {
                placeholder="এখানে আপনার মোবাইল নাম্বার লিখুন"
              />
       </div>
-      {errornumber && <p className="text-yellow-500">{errornumber}</p>}
+      {errorNumber && <p className="text-yellow-500">{errorNumber}</p>}
                <div className="my-2">
-               <label className="font-bold " htmlFor="email">আপনার একটি ইমেইল দিন, আপনার নাম ভুলে গেলে ইমেইল দিয়ে লগইন করতে পারবেন</label>
-                <input className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block " type="email" name="email" placeholder="এখানে আপনার ইমেইল লিখুন" />
+               <label className="font-bold " htmlFor="email">আপনার একটি ইমেইল দিন</label>
+                <input required className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block " type="email" name="email" placeholder="এখানে আপনার ইমেইল লিখুন" />
+                {firebaseError && <p className="text-yellow-500 mt-1">{firebaseError}</p>}
+
                </div>
                <div className="my-2">
                 <label className="font-bold" htmlFor="year">আপনার বয়স লিখুন</label>
@@ -186,17 +189,15 @@ const Driver = () => {
                 
                 <div className="my-2">
                 <label className="font-bold" htmlFor="photo">
-                  আপনার একটি ভালো ও ক্লিয়ার ছবি দিন । <span className="text-yellow-400">
-                  ছবির সাইজ ১এমবির বেশি হওয়া যাবে না ।
-                  </span>
+                  আপনার একটি ভালো ও ক্লিয়ার ছবি দিন ।
                 </label>
                 <input
                   className="bg-gray-700 w-11/12 rounded-md text-purple-500 focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block"
                   type="file"
                   name="photo"
-                  onChange={handleFileChange}
+                 
                 />
-                {errorMessage && <p className="text-yellow-400">{errorMessage}</p>}
+               
               </div>
               <div className="my-2">
                 <label className="font-bold lg:relative" htmlFor="password">একটি শক্তিশালী পাসওয়ার্ড লিখুন। তা মনে রাখতে কোথাও লিখে রাখুন</label>

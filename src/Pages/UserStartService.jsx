@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from '../Providers/AuthProviders';
 
 const UserStartService = () => {
+    const {user} = useContext(AuthContext)
     const [publicPrice, setPublicPrice] = useState(0);
     const taxPrice = 5;
     const othersCost = 0;
@@ -77,15 +80,15 @@ const UserStartService = () => {
             <form onSubmit={handleSubmit} className="lg:w-1/2 text-[14px] lg:text-[16px]  mx-auto my-8">
                 <div className="my-2">
                     <label className="font-bold" htmlFor="name">আপনার নাম লিখুন</label>
-                    <input required className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block " type="text" name="name" placeholder="এখানে আপনার নাম লিখুন" />
+                    <input required defaultValue={user?.displayName} className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block " type="text" name="name" placeholder="এখানে আপনার নাম লিখুন" />
                 </div>
                 <div className="my-2">
                     <label className="font-bold" htmlFor="mobile-number">আপনার মোবাইল নাম্বার </label>
                     <input required className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block " type="number" name="mobile-number" placeholder="এখানে আপনার নাম লিখুন" />
                 </div>
                 <div className="my-2">
-                    <label className="font-bold" htmlFor="email">আপনার ইমেইল লিখুন</label>
-                    <input required className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block " type="email" name="email" placeholder="এখানে আপনার ইমেইল লিখুন" />
+                    <label  className="font-bold" htmlFor="email">আপনার ইমেইল লিখুন</label>
+                    <input defaultValue={user?.email} required className="bg-gray-700 w-11/12 rounded-md text-white focus:border-lime-500 focus:border focus:shadow-lg outline-none px-3 py-2 block " type="email" name="email" placeholder="এখানে আপনার ইমেইল লিখুন" />
                 </div>
                 <div className="my-2">
                     <label className="font-bold" htmlFor="targetplace">আপনি কোথায় থেকে কোথায় যেতে চান</label>
